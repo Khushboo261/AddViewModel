@@ -16,17 +16,21 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ViewModelMainActivity::class.java)
+        binding.viewModel =viewModel
+        binding.lifecycleOwner = this
 
-        viewModel.totalData.observe(this, Observer {
+
+
+        /*viewModel.totalData.observe(this, Observer {
             binding.tvNumber.text = it.toString()
-        })
+        })*/
 
-        binding.apply {
+        /*binding.apply {
             btnAdd.setOnClickListener {
-                viewModel.setTotal(number.text.toString().toInt())
+                viewModel?.setTotal(number.text.toString().toInt())
                 number.setText("")
             }
-        }
+        }*/
 
     }
 }

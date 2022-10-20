@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.addviewmodeldemo.ViewModelMainActivity" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,6 +25,7 @@
         android:minHeight="48dp"
         android:textColorHint="#78909C"
         android:textSize="60sp"
+        android:text="@={viewModel.inputText}"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +39,7 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="@{()->viewModel.setTotal()}"
         android:text="@string/add"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -45,7 +52,7 @@
         android:id="@+id/tvNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/num"
+        android:text="@{String.valueOf(viewModel.totalData)}"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
